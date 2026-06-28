@@ -3,7 +3,7 @@ CREATE EXTENSION IF NOT EXISTS vector;
 
 -- 1. Create Customers Table
 CREATE TABLE IF NOT EXISTS customers (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),cls
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     
     name VARCHAR(255) NOT NULL,
     domain VARCHAR(255) NOT NULL,

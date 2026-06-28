@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { 
   LayoutDashboard, 
@@ -12,6 +12,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { dbService } from '../services/dbService';
 
 const navigationItems = [
   { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
@@ -25,11 +26,40 @@ const navigationItems = [
 
 export const Sidebar: React.FC = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState<any | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    dbService.getUser().then((currUser) => {
+      if (active) {
+        setUser(currUser);
+      }
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const handleLogout = () => {
-    // Clear mock auth if any
+    // Clear mock auth
     localStorage.removeItem('dp_auth');
+    localStorage.removeItem('dp_user');
     navigate('/login');
+  };
+
+  const fullName = user?.user_metadata?.full_name || user?.email || 'Alice Roberts';
+
+  const getInitials = (name: string) => {
+    if (!name) return 'AE';
+    if (name.includes('@')) {
+      const part = name.split('@')[0];
+      return part.slice(0, 2).toUpperCase();
+    }
+    const parts = name.trim().split(/\s+/);
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+    return name.slice(0, 2).toUpperCase();
   };
 
   return (
@@ -46,7 +76,7 @@ export const Sidebar: React.FC = () => {
       </div>
 
       {/* Navigation links */}
-      <nav className="flex-1 px-4 py-6 space-y-1">
+      <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
         {navigationItems.map((item) => (
           <NavLink
             key={item.path}
@@ -79,12 +109,14 @@ export const Sidebar: React.FC = () => {
       {/* Footer / User Profile */}
       <div className="p-4 border-t border-[#1e293b] bg-slate-950/40">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center font-bold text-white text-sm shadow">
-            AR
+          <div className="w-9 h-9 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center font-bold text-white text-sm shadow shrink-0">
+            {getInitials(fullName)}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-white truncate">Alice Roberts</p>
-            <p className="text-xs text-slate-500 truncate">Account Executive</p>
+            <p className="text-sm font-semibold text-white truncate" title={fullName}>{fullName}</p>
+            <p className="text-xs text-slate-500 truncate" title={user?.email || 'Account Executive'}>
+              {user?.email || 'Account Executive'}
+            </p>
           </div>
         </div>
         <button 

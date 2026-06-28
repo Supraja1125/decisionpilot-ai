@@ -52,31 +52,31 @@ const AgentNode: React.FC<AgentNodeProps> = ({ name, role, icon: Icon, status, i
   );
 };
 
+const agents = [
+  { id: 0, name: 'Planner Agent', role: 'Workflow Dispatcher', icon: Cpu },
+  { id: 1, name: 'Context Retrieval', role: 'pgvector Searcher', icon: Database },
+  { id: 2, name: 'Meeting Analysis', role: 'Transcript Parser', icon: FileText },
+  { id: 3, name: 'Risk Analysis', role: 'Churn Classifier', icon: ShieldAlert },
+  { id: 4, name: 'Recommendation', role: 'Playbook Mapper', icon: Compass },
+  { id: 5, name: 'Memory Agent', role: 'Embedding Refiner', icon: Activity },
+  { id: 6, name: 'Human Approval', role: 'Sign-off Manager', icon: CheckSquare }
+];
+
+const logs = [
+  'Planner: Ingestion detected. Parsing meeting transcript and routing flow...',
+  'Context: Searching vector store for Stripe pricing agreements...',
+  'Meeting: Extracted keyword tokens. Found "doubling team next quarter"...',
+  'Risk: Checked competitor flags. Risk tier low. Churn threat 14%.',
+  'Recommendation: Applied Enterprise Volume Discount Playbook. Created email draft.',
+  'Memory: Generated tone embeddings and updated historic episodic logs.',
+  'Approval: Recommendation queued for review. Notification dispatched to AE.'
+];
+
 export const WorkflowVisualizer: React.FC = () => {
   const [simState, setSimState] = useState<'idle' | 'running' | 'completed'>('idle');
   const [activeStep, setActiveStep] = useState<number>(-1);
   const [thinkingLogs, setThinkingLogs] = useState<string[]>([]);
-
-  const agents = [
-    { id: 0, name: 'Planner Agent', role: 'Workflow Dispatcher', icon: Cpu },
-    { id: 1, name: 'Context Retrieval', role: 'pgvector Searcher', icon: Database },
-    { id: 2, name: 'Meeting Analysis', role: 'Transcript Parser', icon: FileText },
-    { id: 3, name: 'Risk Analysis', role: 'Churn Classifier', icon: ShieldAlert },
-    { id: 4, name: 'Recommendation', role: 'Playbook Mapper', icon: Compass },
-    { id: 5, name: 'Memory Agent', role: 'Embedding Refiner', icon: Activity },
-    { id: 6, name: 'Human Approval', role: 'Sign-off Manager', icon: CheckSquare }
-  ];
-
-  const logs = [
-    'Planner: Ingestion detected. Parsing meeting transcript and routing flow...',
-    'Context: Searching vector store for Stripe pricing agreements...',
-    'Meeting: Extracted keyword tokens. Found "doubling team next quarter"...',
-    'Risk: Checked competitor flags. Risk tier low. Churn threat 14%.',
-    'Recommendation: Applied Enterprise Volume Discount Playbook. Created email draft.',
-    'Memory: Generated tone embeddings and updated historic episodic logs.',
-    'Approval: Recommendation queued for review. Notification dispatched to AE.'
-  ];
-
+  
   useEffect(() => {
     let interval: any;
     if (simState === 'running') {

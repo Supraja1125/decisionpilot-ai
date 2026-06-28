@@ -32,7 +32,10 @@ export const HumanApproval: React.FC = () => {
     queryFn: () => dbService.fetchRecommendations(),
   });
 
-  const pendingRecs = recommendations?.filter(r => r.status === 'Pending') || [];
+  const pendingRecs = React.useMemo(() => {
+    return recommendations?.filter(r => r.status === 'Pending') || [];
+  }, [recommendations]);
+
   const selectedRec = pendingRecs.find(r => r.id === selectedRecId) || pendingRecs[0];
 
   // Auto select first pending recommendation once loaded
@@ -40,7 +43,7 @@ export const HumanApproval: React.FC = () => {
     if (pendingRecs.length > 0 && !selectedRecId) {
       setSelectedRecId(pendingRecs[0].id);
     }
-  }, [pendingRecs]);
+  }, [pendingRecs, selectedRecId]);
 
   // Sync edits when selected item changes
   React.useEffect(() => {

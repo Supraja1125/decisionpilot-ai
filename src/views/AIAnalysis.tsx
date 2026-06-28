@@ -25,7 +25,7 @@ export const AIAnalysis: React.FC = () => {
     if (customers && customers.length > 0 && !selectedAccount) {
       setSelectedAccount(customers[0].id);
     }
-  }, [customers]);
+  }, [customers, selectedAccount]);
 
   // Fetch agent logs for active customer
   const { data: activeLogs, isLoading: loadingLogs } = useQuery({

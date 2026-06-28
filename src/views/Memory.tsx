@@ -35,7 +35,7 @@ export const Memory: React.FC = () => {
     if (customers && customers.length > 0 && !selectedAccountTimeline) {
       setSelectedAccountTimeline(customers[0].id);
     }
-  }, [customers]);
+  }, [customers, selectedAccountTimeline]);
 
   // Load shared memories
   const { data: embeddings, isLoading: loadingEmbeddings } = useQuery({

@@ -26,12 +26,7 @@ interface Step {
   details: string[];
 }
 
-export const LiveAgentExecutionModal: React.FC<LiveAgentExecutionModalProps> = ({ isOpen, accountId, onComplete }) => {
-  const [activeStep, setActiveStep] = useState(0);
-  const [confidence, setConfidence] = useState(0);
-  const [pipelineProgress, setPipelineProgress] = useState(0);
-
-  const steps: Step[] = [
+const steps: Step[] = [
     {
       name: 'Planner Agent',
       role: 'Orchestrating flow routing parameters',
@@ -82,6 +77,11 @@ export const LiveAgentExecutionModal: React.FC<LiveAgentExecutionModalProps> = (
     }
   ];
 
+export const LiveAgentExecutionModal: React.FC<LiveAgentExecutionModalProps> = ({ isOpen, accountId, onComplete }) => {
+  const [activeStep, setActiveStep] = useState(0);
+  const [confidence, setConfidence] = useState(0);
+  const [pipelineProgress, setPipelineProgress] = useState(0);
+
   // Target confidence based on account selection
   const targetConfidence = accountId === '2' ? 98 : accountId === '3' ? 82 : 94;
 
@@ -111,7 +111,7 @@ export const LiveAgentExecutionModal: React.FC<LiveAgentExecutionModalProps> = (
     }, 1800);
 
     return () => clearInterval(stepInterval);
-  }, [isOpen]);
+  }, [isOpen, onComplete]);
 
   // Confidence increment timer loop (starts at step 5)
   useEffect(() => {
@@ -129,7 +129,7 @@ export const LiveAgentExecutionModal: React.FC<LiveAgentExecutionModalProps> = (
     }, 50);
 
     return () => clearInterval(incrementInterval);
-  }, [isOpen, activeStep]);
+  }, [isOpen, activeStep, targetConfidence]);
 
   if (!isOpen) return null;
 

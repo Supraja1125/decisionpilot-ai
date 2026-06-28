@@ -40,7 +40,7 @@ export const Interactions: React.FC = () => {
     if (customers && customers.length > 0 && !newAccount) {
       setNewAccount(customers[0].id);
     }
-  }, [customers]);
+  }, [customers, newAccount]);
 
   // Load interactions
   const { data: interactions, isLoading } = useQuery({
