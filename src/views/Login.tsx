@@ -6,7 +6,7 @@ import { dbService } from '../services/dbService';
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('demo@decisionpilot.ai');
+  const [email, setEmail] = useState('admin@decisionpilot.ai');
   const [password, setPassword] = useState('password');
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);

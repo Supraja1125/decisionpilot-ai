@@ -81,7 +81,7 @@ export const AIAnalysis: React.FC = () => {
                   </span>
                 </div>
                 <div className="flex justify-between text-[10px] text-slate-500 mt-2">
-                  <span>ARR: ${(acc.arr / 1000).toFixed(0)}k</span>
+                  <span>ARR: ₹{(acc.arr / 1000).toFixed(0)}k</span>
                   <span>Stage: {acc.stage}</span>
                 </div>
               </button>

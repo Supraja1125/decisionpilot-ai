@@ -149,7 +149,7 @@ export const mockRecommendations: Recommendation[] = [
       channel: 'email',
       recipient: 'champion@snowflake.com',
       subject: 'DecisionPilot ROI: Operational Savings Breakdown for Snowflake CS',
-      body: `Hi Team,\n\nI understand Q3 budgets are under high scrutiny. To assist with the renewal review, we put together a brief ROI report. Based on Snowflake's usage logs, the platform has cut rep lookup times by 12 hours/week, driving an estimated $42,000 in monthly productivity gains.\n\nLet me know if we can hop on a 10-minute call to align on this data for finance.\n\nBest,\nSales Team`
+      body: `Hi Team,\n\nI understand Q3 budgets are under high scrutiny. To assist with the renewal review, we put together a brief ROI report. Based on Snowflake's usage logs, the platform has cut rep lookup times by 12 hours/week, driving an estimated ₹42,000 in monthly productivity gains.\n\nLet me know if we can hop on a 10-minute call to align on this data for finance.\n\nBest,\nSales Team`
     },
     confidenceScore: 0.94,
     status: 'Pending',
@@ -162,7 +162,7 @@ export const mockRecommendations: Recommendation[] = [
     category: 'Upsell',
     title: 'Present Volume Expansion Quote',
     summary: 'Present Stripe with a tiered enterprise expansion quote for the requested 45 seats, applying the standard 15% volume discount.',
-    reasoning: 'Dave requested tier pricing. Offering the 15% discount for bulk seats immediately fits their expansion schedule and captures $28,000 in new ARR.',
+    reasoning: 'Dave requested tier pricing. Offering the 15% discount for bulk seats immediately fits their expansion schedule and captures ₹28,000 in new ARR.',
     evidence: [
       '"doubling the size of their frontend team next quarter and need to add 45 new seats" (Zoom call transcript)',
       'Volume discounting agreement guideline (Playbook Vector ID: PB-14)'
@@ -171,7 +171,7 @@ export const mockRecommendations: Recommendation[] = [
       channel: 'email',
       recipient: 'dave@stripe.com',
       subject: 'DecisionPilot Enterprise Tier Proposal - Stripe Team Expansion',
-      body: `Hi Dave,\n\nGreat connecting on Zoom earlier. To support your team's expansion next quarter, we've prepared a custom quote for the 45 new seats. By upgrading to our Enterprise Growth Tier, we can offer a 15% volume discount, bringing the seat price to $42/month.\n\nI've attached the formal proposal here. Let me know if you would like me to push this through.\n\nBest regards,\nSales Team`
+      body: `Hi Dave,\n\nGreat connecting on Zoom earlier. To support your team's expansion next quarter, we've prepared a custom quote for the 45 new seats. By upgrading to our Enterprise Growth Tier, we can offer a 15% volume discount, bringing the seat price to ₹42/month.\n\nI've attached the formal proposal here. Let me know if you would like me to push this through.\n\nBest regards,\nSales Team`
     },
     confidenceScore: 0.98,
     status: 'Pending',
@@ -184,7 +184,7 @@ export const mockRecommendations: Recommendation[] = [
     category: 'Relationship',
     title: 'Introduce Account Team to New Product Lead',
     summary: 'Reach out to the interim Product Lead to re-introduce DecisionPilot and schedule a brief re-onboarding session.',
-    reasoning: 'Champion departure creates high churn risk. Need to immediately establish a relationship with the new stakeholder to protect the $95,000 ARR account.',
+    reasoning: 'Champion departure creates high churn risk. Need to immediately establish a relationship with the new stakeholder to protect the ₹95,000 ARR account.',
     evidence: [
       '"Sarah Jenkins (our main Champion & Director of Product) has left Retool to join a competitor" (Salesforce CRM Log)'
     ],

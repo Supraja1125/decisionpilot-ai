@@ -183,12 +183,34 @@ export const dbService = {
   async signIn(email: string, password: string): Promise<{ success: boolean; user?: any; error?: string }> {
     if (supabase) {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) return { success: false, error: error.message };
+      if (error) {
+        // Auto-provision admin@decisionpilot.ai if it doesn't exist yet in Supabase auth
+        if (email === 'admin@decisionpilot.ai') {
+          const { error: signUpError } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+              data: {
+                full_name: 'Admin'
+              }
+            }
+          });
+          if (!signUpError) {
+            const { data: retryData, error: retryError } = await supabase.auth.signInWithPassword({ email, password });
+            if (!retryError) {
+              return { success: true, user: retryData.user };
+            }
+            return { success: false, error: retryError.message };
+          }
+          return { success: false, error: signUpError.message };
+        }
+        return { success: false, error: error.message };
+      }
       return { success: true, user: data.user };
     } else {
       // Mock validation
-      if (email === 'demo@decisionpilot.ai' && password === 'password') {
-        const mockUser = { id: 'mock-user-111', email, user_metadata: { full_name: 'Alice Roberts' } };
+      if (email === 'admin@decisionpilot.ai' && password === 'password') {
+        const mockUser = { id: 'mock-user-111', email, user_metadata: { full_name: 'Admin' } };
         localStorage.setItem('dp_auth', 'true');
         localStorage.setItem('dp_user', JSON.stringify(mockUser));
         return { success: true, user: mockUser };

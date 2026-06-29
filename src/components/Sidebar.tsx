@@ -47,7 +47,7 @@ export const Sidebar: React.FC = () => {
     navigate('/login');
   };
 
-  const fullName = user?.user_metadata?.full_name || user?.email || 'Alice Roberts';
+  const fullName = user?.user_metadata?.full_name || user?.email || 'Admin';
 
   const getInitials = (name: string) => {
     if (!name) return 'AE';

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { 
-  DollarSign, 
+  IndianRupee, 
   AlertTriangle, 
   CheckSquare, 
   ArrowRight, 
@@ -93,12 +93,12 @@ export const Dashboard: React.FC = () => {
           <div>
             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Active ARR Managed</p>
             <h3 className="text-2xl font-black text-white mt-1">
-              ${metrics ? (metrics.totalARR / 1000).toFixed(0) : '0'}k
+              ₹{metrics ? (metrics.totalARR / 1000).toFixed(0) : '0'}k
             </h3>
             <span className="text-[10px] font-semibold text-emerald-400 mt-0.5 block">+12.4% vs last month</span>
           </div>
           <div className="p-3 bg-indigo-950/40 rounded-xl text-indigo-400 border border-indigo-500/20">
-            <DollarSign className="w-6 h-6" />
+            <IndianRupee className="w-6 h-6" />
           </div>
         </div>
 
@@ -135,7 +135,7 @@ export const Dashboard: React.FC = () => {
           <div>
             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">ARR Saved by AI</p>
             <h3 className="text-2xl font-black text-white mt-1">
-              ${metrics ? (metrics.arrSavedTotal / 1000).toFixed(0) : '0'}k
+              ₹{metrics ? (metrics.arrSavedTotal / 1000).toFixed(0) : '0'}k
             </h3>
             <span className="text-[10px] font-semibold text-indigo-400 mt-0.5 block">Via protective playbooks</span>
           </div>
@@ -192,11 +192,11 @@ export const Dashboard: React.FC = () => {
                 <YAxis 
                   stroke="#64748b" 
                   fontSize={11} 
-                  tickFormatter={(v) => chartTab === 'arr' ? `$${v / 1000}k` : v}
+                  tickFormatter={(v) => chartTab === 'arr' ? `₹${v / 1000}k` : v}
                 />
                 <Tooltip 
                   contentStyle={{ backgroundColor: '#0b1329', borderColor: '#1e293b', borderRadius: '8px' }}
-                  formatter={(value: any) => [chartTab === 'arr' ? `$${value.toLocaleString()}` : value, chartTab === 'arr' ? 'ARR Saved' : 'Actions executed']}
+                  formatter={(value: any) => [chartTab === 'arr' ? `₹${value.toLocaleString()}` : value, chartTab === 'arr' ? 'ARR Saved' : 'Actions executed']}
                 />
                 <Area 
                   type="monotone" 
