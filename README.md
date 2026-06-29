@@ -1,6 +1,12 @@
 # 🚀 DecisionPilot AI – Intelligent Next Best Action Platform
 
-## 📌 Overview
+## Team Details
+
+1.Mekala Supraja - 23071A12A5 - Information Technology
+2.Mogullapalli Anvita - 23071A12A8 - Information Technology
+3.Shreya Sridhar - 23071A12C1 - Information Technology
+
+## 📌Project Overview
 
 DecisionPilot AI is an **Agentic Decision Intelligence Platform** built for the XLVentures.AI Hackathon.
 
@@ -9,6 +15,11 @@ The platform transforms customer interactions into intelligent, explainable, and
 Unlike traditional chatbots, DecisionPilot orchestrates multiple AI agents to analyze customer conversations, identify risks and opportunities, retrieve organizational memory, and recommend the **Next Best Action** while keeping a human in the loop before execution.
 
 ---
+
+## GitHub repo link 
+
+https://github.com/Supraja1125/decisionpilot-ai
+
 
 # 🎯 Problem Statement
 
@@ -226,16 +237,14 @@ npm run build
 
 # 📂 Project Structure
 
-```
+```text
 src/
- ├── agents/
- ├── services/
- ├── pages/
- ├── components/
- ├── hooks/
- ├── lib/
- ├── data/
- └── App.tsx
+ ├── components/   # Reusable UI widgets (modals, navigations, visualizers)
+ ├── data/         # Mock data generator seed structures
+ ├── lib/          # Helper libraries (Supabase client initializer)
+ ├── services/     # core database layer and Gemini service agents
+ ├── views/        # Platform workspace tab view components
+ └── App.tsx       # Root entrypoint with layout & router
 ```
 
 ---
@@ -265,15 +274,3 @@ src/
 * Live Agent Monitoring
 
 ---
-
-<!-- # 👥 Team
-
-Team Name: **[Your Team Name]**
-
-Hackathon: **XLVentures.AI Hackathon 2026**
-
----
-
-# 📄 License
-
-This project was developed for the XLVentures.AI Hackathon and is intended for educational and demonstration purposes. -->
