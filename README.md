@@ -1,5 +1,9 @@
 # 🚀 DecisionPilot AI – Intelligent Next Best Action Platform
 
+<img width="1918" height="905" alt="image" src="https://github.com/user-attachments/assets/72153e23-346e-43e5-91d4-595b6b5626be" />
+<!-- <img width="1916" height="897" alt="image" src="https://github.com/user-attachments/assets/dac1172c-52ed-41d0-b828-2b439fb5b6b1" /> -->
+
+
 ## Team Details
 
 1.Mekala Supraja - 23071A12A5 - Information Technology
